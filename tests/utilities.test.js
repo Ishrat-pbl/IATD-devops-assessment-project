@@ -93,6 +93,7 @@ test("isValidDateString: invalid string", () => {
   ///// PUT YOUR TESTS FOR generateFlightId HERE /////
 
   // Test uppercase
+  /*
   test("generateFlightId: is uppercase", () => {
     expect(generateFlightId("Qantas").substring(0, 2)).toBe("QA");
   });
@@ -106,3 +107,33 @@ test("isValidDateString: invalid string", () => {
   test("generateFlightId: whitespace string", () => {
     expect(generateFlightId("   \n")).toBe(undefined);
   });
+  */
+ describe('generateFlightId', () => {
+  it('should return undefined for empty airline string', () => {
+    expect(generateFlightId('')).toBeUndefined();
+    expect(generateFlightId('   ')).toBeUndefined();
+  });
+
+  it('should return a 5-character alphanumeric flight ID for valid airline name', () => {
+    const airline = 'Qantas';
+    const flightId = generateFlightId(airline);
+
+    expect(flightId).toMatch(/^[A-Z]{2}\d{3}$/);
+    expect(flightId.startsWith('QA')).toBe(true);
+  });
+
+  it('should use the first two characters of the airline name in uppercase', () => {
+    const airline = 'emirates';
+    const flightId = generateFlightId(airline);
+
+    expect(flightId.startsWith('EM')).toBe(true);
+  });
+
+  it('should generate different IDs on multiple calls (due to randomness)', () => {
+    const airline = 'AA';
+    const id1 = generateFlightId(airline);
+    const id2 = generateFlightId(airline);
+
+    expect(id1).not.toBe(id2); // This may occasionally fail due to randomness
+  });
+});
