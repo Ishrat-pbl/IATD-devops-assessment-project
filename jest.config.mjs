@@ -107,7 +107,8 @@ const config = {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  reporters: ["github-actions", "default"],
+  //reporters: ["github-actions", "default"],
+   reporters: ["default", "github-actions"],
 
   // Automatically reset mock state before every test
   // resetMocks: false,
@@ -195,4 +196,10 @@ const config = {
   // watchman: true,
 };
 
-export default config;
+export default {
+ testEnvironment: 'node',
+ transform: {}, // required for ESM support
+}
+ 
+
+//export default config;
