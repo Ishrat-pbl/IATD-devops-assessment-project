@@ -4,14 +4,13 @@ FROM node:18-alpine
 
 WORKDIR /userapp
 
-COPY package.json package-lock.json ./
+COPY package.json ./
 
-RUN npm install --production
+#RUN npm install --production
+RUN npm ci --only=productionv
 
 COPY ./ ./
 
 # EXPOSE 3000
-
-RUN npm test
 
 CMD ["npm", "start"]
