@@ -38,6 +38,6 @@ jobs:
       uses: docker/build-push-action@v5  
       with:
         context: .
-        file: ./Dockerfile
+        file: Dockerfiles/test.Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/jahan-ishrat-intro-to-devops-a2:latest
