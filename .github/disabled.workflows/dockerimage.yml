@@ -32,11 +32,10 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Set up Docker Build Tools
       uses: docker/setup-buildx-action@v3
-    - name: Build test image and push to docker hub
+    - name: Build user-latest image and push to docker hub
       uses: docker/build-push-action@v5  
       with:
         context: .
-        file: Dockerfiles/test.Dockerfile
+        file: Dockerfiles/user.Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/jahan-ishrat-intro-to-devops-a2:test-latest
-    
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/jahan-ishrat-intro-to-devops-a2:user-latest    
