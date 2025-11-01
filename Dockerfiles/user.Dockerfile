@@ -7,7 +7,7 @@ WORKDIR /userapp
 COPY package.json ./
 
 #RUN npm install --production
-RUN npm ci --only=productionv
+RUN npm ci --only=production
 
 COPY ./ ./
 
